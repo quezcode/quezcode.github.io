@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASKITELLAM <3</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow: hidden;
+            background-image: url('havva.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Arial Black', sans-serif;
+        }
+        .neon-yazi {
+            font-size: 80px;
+            color: #fff;
+            text-align: center;
+            text-shadow:
+                0 0 7px #fff,
+                0 0 10px #fff,
+                0 0 21px #fff,
+                0 0 42px #ff00de,
+                0 0 82px #ff00de,
+                0 0 92px #ff00de,
+                0 0 102px #ff00de,
+                0 0 151px #ff00de;
+            animation: flicker 1.5s infinite alternate;
+            z-index: 2;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+        }
+        @keyframes flicker {
+            0%, 18%, 22%, 25%, 53%, 57%, 100% {
+                text-shadow:
+                    0 0 7px #fff,
+                    0 0 10px #fff,
+                    0 0 21px #fff,
+                    0 0 42px #ff00de,
+                    0 0 82px #ff00de,
+                    0 0 92px #ff00de,
+                    0 0 102px #ff00de,
+                    0 0 151px #ff00de;
+            }
+            20%, 24%, 55% {
+                text-shadow: none;
+            }
+        }
+        .kalp {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #ff00de;
+            transform: rotate(-45deg);
+            animation: yuksel 5s linear infinite;
+            opacity: 0.8;
+            box-shadow: 0 0 10px #ff00de, 0 0 20px #ff00de;
+        }
+        .kalp::before,
+        .kalp::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #ff00de;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #ff00de, 0 0 20px #ff00de;
+        }
+        .kalp::before { top: -10px; left: 0; }
+        .kalp::after { top: 0; left: 10px; }
+        @keyframes yuksel {
+            0% { bottom: -50px; transform: rotate(-45deg) scale(0.5); opacity: 0; }
+            20% { opacity: 1; }
+            100% { bottom: 100%; transform: rotate(-45deg) scale(1.5); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="neon-yazi">SENI COK SEVIYORUM HAVVOSUMM</div>
+    <script>
+        function kalpOlustur() {
+            const kalp = document.createElement('div');
+            kalp.classList.add('kalp');
+            kalp.style.left = Math.random() * 100 + 'vw';
+            kalp.style.animationDuration = (Math.random() * 3 + 3) + 's';
+            kalp.style.animationDelay = Math.random() * 5 + 's';
+            document.body.appendChild(kalp);
+            setTimeout(() => { kalp.remove(); }, 8000);
+        }
+        setInterval(kalpOlustur, 300);
+    </script>
+</body>
+</html>
